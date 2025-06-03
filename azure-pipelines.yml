@@ -1,0 +1,42 @@
+trigger:
+- development
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    yarn install
+    yarn run build
+  displayName: 'yarn install and build'
+
+# Zip build folder
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/build.zip'
+    replaceExistingArchive: true
+  displayName: 'Archive build output'
+
+# Publish as artifact (optional but useful for release pipelines)
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)/build.zip'
+    artifactName: 'drop'
+    publishLocation: 'Container'
+
+# Deploy to Azure Web App
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'azure-sub-conn'
+    appType: 'webApp' # or 'webApp' for Windows
+    appName: 'erc20-ui-dev'
+    package: '$(Build.ArtifactStagingDirectory)/build.zip'
+  displayName: 'Deploy to Azure Web App'
