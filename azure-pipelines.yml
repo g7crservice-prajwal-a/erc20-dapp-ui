@@ -14,10 +14,13 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    echo Starting yarn install and build
+    yarn install || (echo "install failed!" && exit 1)
+  displayName: 'yarn install'
+
+- script: |
     yarn run build || (echo "Build failed!" && exit 1)
-    yarn run build
-  displayName: 'Install and Build Vite React App (Windows)'
+  displayName: 'yarn build'
+
 
 - script: |
     echo "Listing files after build"
