@@ -14,10 +14,19 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    set -e
     yarn install
     yarn run build
   displayName: 'yarn install and build'
 
+- script: |
+    echo "=== Current working directory ==="
+    pwd
+    echo "=== List root ==="
+    ls -la
+    echo "=== List contents of ./dist (should exist if build succeeded) ==="
+    ls -la dist || echo "❌ dist folder NOT FOUND"
+  displayName: 'DEBUG: Check dist folder existence'
 
 - task: ArchiveFiles@2
   inputs:
