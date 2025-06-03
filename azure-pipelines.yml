@@ -31,11 +31,7 @@ steps:
   displayName: 'Archive build output'
 
 # Publish as artifact (optional but useful for release pipelines)
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)/build.zip'
-    artifactName: 'drop'
-    publishLocation: 'Container'
+
 
 # Deploy to Azure Web App
 - task: AzureWebApp@1
