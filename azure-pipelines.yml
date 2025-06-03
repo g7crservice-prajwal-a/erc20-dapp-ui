@@ -4,6 +4,9 @@ trigger:
 pool:
   name: Stan Pool 
 
+variables:
+  buildDir: 'build'
+
 steps:
 - task: NodeTool@0
   inputs:
@@ -16,9 +19,11 @@ steps:
   displayName: 'yarn install and build'
 
 # Zip build folder
+
+
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: 'build'
+    rootFolderOrFile: '$(buildDir)'
     includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/build.zip'
