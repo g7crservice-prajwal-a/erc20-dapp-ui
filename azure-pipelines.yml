@@ -14,19 +14,24 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    set -e
-    yarn install
-    yarn run build
-  displayName: 'yarn install and build'
+    echo Starting yarn install and build
+    yarn install || exit /b 1
+    yarn run build || exit /b 1
+  displayName: 'Install and Build Vite React App (Windows)'
 
 - script: |
-    echo "=== Current working directory ==="
-    pwd
-    echo "=== List root ==="
-    ls -la
-    echo "=== List contents of ./dist (should exist if build succeeded) ==="
-    ls -la dist || echo "❌ dist folder NOT FOUND"
-  displayName: 'DEBUG: Check dist folder existence'
+    echo === Current working directory ===
+    cd
+    echo === List root directory ===
+    dir
+    echo === List contents of dist (should exist if build succeeded) ===
+    if exist dist (
+      dir dist
+    ) else (
+      echo ❌ dist folder NOT FOUND
+      exit /b 1
+    )
+  displayName: 'DEBUG: Check dist folder on Windows'
 
 - task: ArchiveFiles@2
   inputs:
