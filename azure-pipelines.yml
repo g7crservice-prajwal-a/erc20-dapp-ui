@@ -15,23 +15,14 @@ steps:
 
 - script: |
     echo Starting yarn install and build
-    yarn install || exit /b 1
-    yarn run build || exit /b 1
+    yarn run build || (echo "Build failed!" && exit 1)
+    yarn run build
   displayName: 'Install and Build Vite React App (Windows)'
 
 - script: |
-    echo === Current working directory ===
-    cd
-    echo === List root directory ===
+    echo "Listing files after build"
     dir
-    echo === List contents of dist (should exist if build succeeded) ===
-    if exist dist (
-      dir dist
-    ) else (
-      echo ❌ dist folder NOT FOUND
-      exit /b 1
-    )
-  displayName: 'DEBUG: Check dist folder on Windows'
+  displayName: 'List files after build'
 
 - task: ArchiveFiles@2
   inputs:
