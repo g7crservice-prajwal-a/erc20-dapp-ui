@@ -19,6 +19,12 @@ steps:
   displayName: 'yarn install and build'
 
 # Zip build folder
+- script: |
+    echo "List all files/folders in current working directory:"
+    ls -la
+    echo "List contents of dist directory:"
+    ls -la dist || echo "dist folder does not exist"
+  displayName: 'Check if dist folder is created'
 
 
 - task: ArchiveFiles@2
