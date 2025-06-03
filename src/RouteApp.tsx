@@ -42,10 +42,7 @@ function RouteApp() {
         <div>
           <Default tokenInfo={tokenInfo} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8 overflow-y-auto">
-            <BuyToken
-              tokenInfo={tokenInfo}
-              txtUpdateControl={txtUpdateControl}
-            />
+            <BuyToken txtUpdateControl={txtUpdateControl} />
 
             <Transactions transactions={transactions} />
           </div>

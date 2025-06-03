@@ -1,16 +1,13 @@
-import { Contract, ethers } from "ethers";
+import { ethers } from "ethers";
 import { ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { useContracts } from "../hooks/useContract";
-import type { ITokenInfo } from "../types/components.type";
-import { useTokenPurchasedEvent } from "../hooks/useTokenPurchasedEvent";
 
 type PropsType = {
-  tokenInfo: ITokenInfo;
   txtUpdateControl: () => void;
 };
 
-function BuyToken({ tokenInfo, txtUpdateControl }: Readonly<PropsType>) {
+function BuyToken({ txtUpdateControl }: Readonly<PropsType>) {
   const { StanTokenSaleContract } = useContracts();
   const [ethAmount, setEthAmount] = useState(""),
     [loader, setLoader] = useState<boolean>(false);
