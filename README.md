@@ -1,54 +1,48 @@
-# React + TypeScript + Vite
+# ERC-20 Token Sale DApp UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a decentralized application (DApp) frontend built with **React** and **Ethers.js** that interacts with an ERC-20 Token and a Token Sale smart contract deployed on the Ethereum blockchain.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 Display token information (name, symbol, total supply, decimals)
+- 💸 Buy tokens using ETH
+- 🧾 View all token purchase transactions with:
+  - Buyer address
+  - ETH paid
+  - Tokens received
+  - Transaction hash
+  - Purchase date and time
+- 📦 Live blockchain interaction using Ethers.js
+- 🦊 Metamask wallet integration
 
-## Expanding the ESLint configuration
+## 📁 Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+src/
+├── components/
+│ ├── BuyToken.tsx
+│ ├── Transactions.tsx
+├── context/
+│ └── WalletContext.tsx
+├── hooks/
+│ ├── useContract.ts
+│ ├── useTokenPurchasedEvent.ts
+├── types/
+│ └── ...
+├── App.tsx
+├── main.tsx
+└── RouteApp.tsk 
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## ⚙️ Setup
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/erc20-dapp-ui.git
+cd erc20-dapp-ui
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Yarn install 
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+yarn dev run
+
+
+
+
