@@ -16,7 +16,7 @@ This is a decentralized application (DApp) frontend built with **React** and **E
 - 🦊 Metamask wallet integration
 
 ## 📁 Project Structure
-
+```bash
 src/
 ├── components/
 │ ├── BuyToken.tsx
@@ -32,17 +32,22 @@ src/
 ├── main.tsx
 └── RouteApp.tsk 
 
+```
 ## ⚙️ Setup
 
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/your-username/erc20-dapp-ui.git
 cd erc20-dapp-ui
+```
 
-Yarn install 
+### 2. Installation 
+```bash
 
+yarn install 
 yarn dev run
 
+```
 
 
 
